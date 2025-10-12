@@ -12,7 +12,7 @@ class Submission(models.Model):
     title = models.CharField(max_length=100)
     genre = models.CharField(max_length=100)
     synopsis = models.TextField()
-    sample = models.FileField(upload_to="manuscripts/")
+    sample_file = models.FileField(upload_to="manuscripts/")
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="pending")
     submitted_at = models.DateTimeField(auto_now_add=True)
 
