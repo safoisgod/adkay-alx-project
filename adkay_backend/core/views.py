@@ -1,15 +1,16 @@
 from django.shortcuts import render
 import requests
 
-from .models import Submission
-from .forms import SubmissionForm
+from .models import Submission, Book
 
 from users.models import CustomUser
 
 from rest_framework import status
+from rest_framework import generics
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from .serializers import SubmissionSerializer, BookSerializer
 
 
 class QouteView(APIView):
@@ -20,10 +21,21 @@ class QouteView(APIView):
     
 class SubmissionView(APIView):
     def post(self, request):
-        form = SubmissionForm(request.data, request.FILES)
-        if form.is_valid():
-            submission = form.save(commit=False)
-            submission.author = CustomUser.objects.get(username="iamnanasafo")
-            submission.save()
-            return Response({"message":"Submitted"}, status=status.HTTP_201_CREATED)
-        return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        # backend validation
+        serializer = SubmissionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(author = CustomUser.objects.get(username = "iamnanasafo"))
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+
+
+class BookListView(generics.ListAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+
+class BookDetailsView(generics.RetrieveAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+

@@ -1,0 +1,74 @@
+/* SubmitForm.css */
+
+.submit-form-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.submit-form-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+.submit-form-container label {
+  display: block;
+  font-weight: 500;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.submit-form-container input[type="text"],
+.submit-form-container textarea,
+.submit-form-container input[type="file"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.submit-form-container textarea {
+  resize: vertical;
+}
+
+.submit-form-container button {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-form-container button:hover {
+  background-color: #555;
+}
+
+.submit-form-container p {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  color: red;
+}
+
+.server-error {
+  background-color: #ffe9a8;
+  color: #b30000;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  text-align: center;
+}

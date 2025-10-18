@@ -21,7 +21,7 @@ class BookAdmin(admin.ModelAdmin):
     get_author.admin_order_field = "submission__author"
 
     def get_title(self, obj):
-        return obj.submssion.title
+        return obj.submission.title
     get_title.short_description = "title"
     get_author.admin_iorder_field = "submission__title"
 
