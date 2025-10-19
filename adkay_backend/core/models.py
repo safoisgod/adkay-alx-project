@@ -16,9 +16,15 @@ class Submission(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="pending")
     submitted_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+
 
 class Book(models.Model):
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     published_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.submission.title} by {self.submission.author}"
